@@ -1,15 +1,15 @@
 
-BUILDDIR=hyperscan/hs_build
+CURDIR=$(pwd)
+
+BUILDDIR=$CURDIR/vendor/hyperscan/hs_build
 
 #FileType=None
 #FileType=Debug
 #FileType=MinSizeRel
-FileType=Release
 #FileType=RelWithDebInfo
+FileType=Release
 
-CURDIR=$(pwd)
-
-#ln -s $(pwd)/boost_1_64_0/boost hyperscan/include/boost
+ln -s $CURLDIR/vendor/boost vendor/hyperscan/include/boost
 
 rm -fr $BUILDDIR && mkdir $BUILDDIR
 cd $BUILDDIR && cmake ../                           \
