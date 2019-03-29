@@ -6,3 +6,6 @@
 	path = vendor/boost
     url = https://github.com/boostorg/boost.git
     tag = boost-1.60.0
+[submodule "vendor/test_clib"]
+	path = vendor/test_clib
+	url = https://github.com/ebayboy/test_clib.git
