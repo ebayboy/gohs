@@ -29,10 +29,9 @@ import (
 	"bytes"
 	"flag"
 	"fmt"
+	"github.com/flier/gohs/hyperscan"
 	"io/ioutil"
 	"os"
-
-	"github.com/flier/gohs/hyperscan"
 )
 
 var (
