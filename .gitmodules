@@ -1,11 +1,3 @@
-[submodule "vendor/hyperscan"]
-	path = vendor/hyperscan
-	url = https://github.com/intel/hyperscan.git
-    tag = v5.1.0
-[submodule "vendor/boost"]
-	path = vendor/boost
-    url = https://github.com/boostorg/boost.git
-    tag = boost-1.60.0
 [submodule "vendor/test_clib"]
 	path = vendor/test_clib
 	url = https://github.com/ebayboy/test_clib.git
