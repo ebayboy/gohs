@@ -29,7 +29,6 @@ import (
 	"bytes"
 	"flag"
 	"fmt"
-	//"github.com/flier/gohs/hyperscan"
 	"github.com/ebayboy/gohs/hyperscan"
 	"io/ioutil"
 	"os"
