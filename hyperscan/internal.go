@@ -11,8 +11,8 @@ import (
 )
 
 /*
-#cgo pkg-config: libhs
-#cgo linux LDFLAGS: -lm -lstdc++
+#cgo linux CFLAGS : -I./include
+#cgo linux LDFLAGS: -lm -lstdc++ -lhs -L./lib
 #cgo darwin LDFLAGS: -lstdc++
 
 #include <stdlib.h>
