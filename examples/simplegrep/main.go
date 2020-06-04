@@ -1,7 +1,7 @@
 package main
 
 import (
-	"bytes"
+	//"bytes"
 	"flag"
 	"fmt"
 	"github.com/ebayboy/gohs/hyperscan"
@@ -12,20 +12,23 @@ import (
 func eventHandler(id uint, from, to uint64, flags uint, context interface{}) error {
 	inputData := context.([]byte)
 
-	start := bytes.LastIndexByte(inputData[:from], '\n')
-	end := int(to) + bytes.IndexByte(inputData[to:], '\n')
+	/*
+		start := bytes.LastIndexByte(inputData[:from], '\n')
+		end := int(to) + bytes.IndexByte(inputData[to:], '\n')
 
-	if start == -1 {
-		start = 0
-	} else {
-		start += 1
-	}
+		if start == -1 {
+			start = 0
+		} else {
+			start += 1
+		}
 
-	if end == -1 {
-		end = len(inputData)
-	}
+		if end == -1 {
+			end = len(inputData)
+		}
 
-	fmt.Printf("%s%s\n", inputData[start:from], inputData[to:end])
+		fmt.Printf("Matched:%s%s\n", inputData[start:from], inputData[to:end])
+	*/
+	fmt.Printf("Matched:%s id:%d\n", inputData[from:to], id)
 
 	return nil
 }
@@ -45,10 +48,14 @@ func main() {
 	if err != nil {
 		os.Exit(-1)
 	}
-	fmt.Printf("Scanning %d bytes with Hyperscan\n", len(inputData))
+	fmt.Println("inputData:", string(inputData))
+	fmt.Println("pattern:", flag.Arg(0))
 
+	pattern0 := hyperscan.NewPattern(".*bcde", hyperscan.DotAll|hyperscan.SomLeftMost)
+	pattern0.Id = 10000
 	pattern := hyperscan.NewPattern(flag.Arg(0), hyperscan.DotAll|hyperscan.SomLeftMost)
-	database, err := hyperscan.NewBlockDatabase(pattern)
+	pattern.Id = 10001
+	database, err := hyperscan.NewBlockDatabase(pattern0, pattern)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "ERROR: Unable to compile pattern \"%s\": %s\n", pattern.String(), err.Error())
 		os.Exit(-1)
